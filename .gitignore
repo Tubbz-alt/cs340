@@ -1,0 +1,8 @@
+# Ignore compiled python files
+*.pyc
+
+# Ignore inputs and outputs for 1st project
+proj1/output/
+proj1/perm/
+proj1/sorted/
+proj1/runs.csv
