@@ -1,6 +1,10 @@
 # Ignore compiled python files
 *.pyc
 
+# Ignore compiled c files
+*.o
+*.so
+
 # Ignore inputs and outputs for 1st project
 proj1/output/
 proj1/perm/
