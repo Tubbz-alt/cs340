@@ -5,10 +5,9 @@
 *.o
 *.so
 
-# Ignore inputs and outputs for 1st project
+# Ignore outputs for 1st project
 proj1/output/
-proj1/perm/
-proj1/sorted/
 proj1/runs.csv
+
 #Ignore binaries from 1st project
 proj1/test
