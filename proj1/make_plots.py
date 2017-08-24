@@ -2,11 +2,11 @@
 
 import time
 import datetime
-import threading
+from multiprocessing import Process, Lock
 
 from sorts import insertion_sort, merge_sort
 
-mux = threading.Lock()
+mux = Lock()
 
 def time_sort(sort, size, arrangement):
   # Get the data from the input file
@@ -49,7 +49,7 @@ def main():
   for sort in sorts:
     for size in sizes:
       for arrangement in arrangements:
-        t = threading.Thread(target=time_sort, args=(sort, size, arrangement))
+        t = Process(target=time_sort, args=(sort, size, arrangement))
         threads.append(t)
         t.start()
   for t in threads:
