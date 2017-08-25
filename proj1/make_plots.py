@@ -51,7 +51,11 @@ def main():
       for arrangement in arrangements:
         t = Process(target=time_sort, args=(sort, size, arrangement))
         threads.append(t)
-        t.start()
+        try:
+          t.start()
+        except OSError:
+          time.sleep(1) # Wait a second while the system frees a process
+          t.start()
   for t in threads:
     t.join()
 
