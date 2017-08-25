@@ -2,7 +2,7 @@
 import time
 import datetime
 
-from sorts import insertion_sort, merge_sort
+from sorts import insertion_sort, merge_sort, heap_sort, build_heap
 
 def menu(options, prompt):
   while True:
@@ -17,8 +17,8 @@ def menu(options, prompt):
 
 def main():
   # Determine which sort we'll use
-  sorts = [insertion_sort, merge_sort]
-  sort_options = ['Insertion Sort', 'Merge Sort']
+  sorts = [insertion_sort, merge_sort, heap_sort, build_heap]
+  sort_options = ['Insertion Sort', 'Merge Sort', 'Heap Sort', 'Build Heap']
   sort = sorts[menu(sort_options, 'Choose a sort')]
 
   # Determine the file size
