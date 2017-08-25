@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import os
 import time
 import datetime
 
@@ -47,6 +48,8 @@ def main():
   # Create the output file
   time_string = datetime.datetime.fromtimestamp(t1).strftime('%Y-%m-%d@%H:%M:%S')
   output_file = 'output/%s.txt' % (time_string)
+  if not os.path.exists('output'):
+    os.makedirs('outputs')
   with open(output_file, 'w') as f:
     for line in data:
       f.write('%s\n' % line)
