@@ -1,8 +1,12 @@
 .PHONY: all test zip clean
-all: sortsmodule.c
+all: sorts.so
+test: test.c sorts.c
+	gcc -g sorts.c test.c -o test
+sortsmodule.o: sortsmodule.c
 	gcc -I/usr/include/python2.7/ -fPIC -O3 -c -o sortsmodule.o sortsmodule.c
-	gcc -shared sortsmodule.o -L/usr/local/lib -o sorts.so
-test: test.c sortsmodule.c
-	gcc -g -I/usr/include/python2.7/ -o test test.c sortsmodule.c
+sorts.o: sorts.c
+	gcc -fPIC -O3 -c -o sorts.o sorts.c
+sorts.so: sortsmodule.o sorts.o
+	gcc -shared sortsmodule.o sorts.o -o sorts.so
 clean:
 	rm -f *.o *.pyc
