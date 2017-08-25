@@ -4,7 +4,7 @@ import time
 import datetime
 from multiprocessing import Process, Lock
 
-from sorts import insertion_sort, merge_sort
+from sorts import insertion_sort, merge_sort, heap_sort
 
 mux = Lock()
 
@@ -41,7 +41,7 @@ def main():
   with open('runs.csv', 'w') as f:
     f.write('NAME,TIME\n')
 
-  sorts = [insertion_sort, merge_sort]
+  sorts = [insertion_sort, merge_sort, heap_sort]
   sizes = [30, 60, 90, 120, 150]
   arrangements = ['sorted', 'perm']
 
