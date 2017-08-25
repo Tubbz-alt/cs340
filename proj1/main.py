@@ -49,7 +49,7 @@ def main():
   time_string = datetime.datetime.fromtimestamp(t1).strftime('%Y-%m-%d@%H:%M:%S')
   output_file = 'output/%s.txt' % (time_string)
   if not os.path.exists('output'):
-    os.makedirs('outputs')
+    os.makedirs('output')
   with open(output_file, 'w') as f:
     for line in data:
       f.write('%s\n' % line)
