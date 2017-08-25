@@ -66,7 +66,7 @@ void heap_sort(char** arr, int n){
   int i;
   
   build_heap(arr, n);
-  for (i = n - 1; i < 1; i--) {
+  for (i = n - 1; i > 0; i--) {
     swap(arr, 0, i);
     n--;
     heapify(arr, n, 0);
@@ -83,13 +83,13 @@ void build_heap(char** arr, int n) {
 void heapify(char** arr, int n, int i) {
   int l, r, pos;
   
-  l = LEFT(n);
-  r = RIGHT(n);
+  l = LEFT(i);
+  r = RIGHT(i);
   pos = i;
-  if (l < n && strcmp(arr[l], arr[i]) < 0) {
+  if (l < n && strcmp(arr[l], arr[i]) > 0) {
     pos = l;
   }
-  if (r < n && strcmp(arr[r], arr[pos]) < 0) {
+  if (r < n && strcmp(arr[r], arr[pos]) > 0) {
     pos = r;
   }
   if (pos != i) {
