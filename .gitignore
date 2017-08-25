@@ -5,6 +5,10 @@
 *.o
 *.so
 
+# Ignore zipped directories
+*.zip
+*.tgz
+
 # Ignore outputs for 1st project
 proj1/output/
 proj1/runs.csv
