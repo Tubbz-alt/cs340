@@ -4,7 +4,7 @@ import time
 import datetime
 from multiprocessing import Process, Lock
 
-from sorts import insertion_sort, merge_sort, heap_sort
+from sorts import insertion_sort, merge_sort, heap_sort, build_heap
 
 mux = Lock()
 
@@ -23,8 +23,7 @@ def time_sort(sort, size, arrangement):
   delta = t2 - t1
 
   # Write our data to the csv
-  name = '%s%dK.txt - %s' % (arrangement, size, sort.__name__)
-  data = '%s,%.8f\n' % (name, delta)
+  data = '%s,%s,%d,%.8f\n' % (arrangement, sort.__name__, size, delta)
   # Aquire the lock to write to the output file
   mux.acquire()
   # Write the data
@@ -34,14 +33,15 @@ def time_sort(sort, size, arrangement):
   mux.release()
 
   # Print that we're done
+  name = '%s%dK.txt - %s' % (arrangement, size, sort.__name__)
   print '%s is done.' % name
 
 def main():
   # Create the csv file
   with open('runs.csv', 'w') as f:
-    f.write('NAME,TIME\n')
+    f.write('ARRANGEMENT,SORT,SIZE,TIME\n')
 
-  sorts = [insertion_sort, merge_sort, heap_sort]
+  sorts = [insertion_sort, merge_sort, heap_sort, build_heap]
   sizes = [30, 60, 90, 120, 150]
   arrangements = ['sorted', 'perm']
 
