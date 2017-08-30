@@ -15,3 +15,5 @@ proj1/runs.csv
 
 #Ignore binaries from 1st project
 proj1/test
+#Ignore binaries from the 2nd project
+proj1/test

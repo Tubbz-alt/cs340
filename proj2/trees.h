@@ -7,6 +7,7 @@ typedef struct _node {
 } node;
 
 extern node* make_tree(char**, int);
-extern void insert(node*, char*);
+extern void insert(node**, char*);
+extern node* search(node*, char*);
 
 #endif

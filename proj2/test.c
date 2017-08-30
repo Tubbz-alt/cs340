@@ -15,6 +15,11 @@ void main() {
 
   node* tree;
   tree = make_tree(arr, 4);
-  print_tree(tree);
+  if (search(tree, "cat")) {
+    printf("Found cat!\n");
+  }
+  if (!search(tree, "bat")) {
+    printf("Didn't find bat!\n");
+  }
 }
 
