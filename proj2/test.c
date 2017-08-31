@@ -11,10 +11,10 @@ void print_tree(node* tree) {
 }
 
 void main() {
-  char* arr[] = {"cat", "in", "a", "hat"};
+  char* arr[] = {"cat", "dog"};
 
   node* tree;
-  tree = make_tree(arr, 4);
+  tree = make_tree(arr, 2);
   if (search(tree, "cat")) {
     printf("Found cat!\n");
   }

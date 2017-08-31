@@ -3,7 +3,7 @@ import os
 import time
 import datetime
 
-from trees import binary_tree, red_black_tree, binary_tree_search, red_black_tree_search
+from trees import binary_tree, red_black_tree, search_binary_tree, search_red_black_tree
 
 def menu(options, prompt):
   while True:
@@ -18,7 +18,7 @@ def menu(options, prompt):
 
 def main():
   # Determine which tree we'll use
-  trees = [(binary_tree, binary_tree_search), (red_black_tree, red_black_tree_search)]
+  trees = [(binary_tree, search_binary_tree), (red_black_tree, search_red_black_tree)]
   tree_options = ['Binary Tree', 'Red-Black Tree']
   tree, search = trees[menu(tree_options, 'Choose a tree')]
 
