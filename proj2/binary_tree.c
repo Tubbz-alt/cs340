@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "binary_tree.h"
@@ -10,7 +11,6 @@ node* make_tree(char** arr, int n) {
   for (i = 0; i < n; i++) {
     insert(&tree, arr[i]);
   }
-
   return tree;
 }
 
@@ -21,6 +21,9 @@ void insert(node** tree, char* key) {
 
   mine = (node*)malloc(sizeof(node));
   mine->key = key;
+  mine->left = NULL;
+  mine->right = NULL;
+  mine->parent = NULL;
 
   curr = *tree;
   prev = NULL;
@@ -47,7 +50,7 @@ void insert(node** tree, char* key) {
   }
 }
 
-node* search(node* tree, char* key) {
+node* search(node* tree, const char* key) {
   if (tree == NULL) return NULL;
   if (strcmp(tree->key, key) == 0) return tree;
   if (strcmp(tree->key, key) > 0) return search(tree->left, key);

@@ -8,6 +8,6 @@ typedef struct _node {
 
 extern node* make_tree(char**, int);
 extern void insert(node**, char*);
-extern node* search(node*, char*);
+extern node* search(node*, const char*);
 
 #endif

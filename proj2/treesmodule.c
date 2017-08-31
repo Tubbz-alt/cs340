@@ -1,3 +1,5 @@
+#include <stdlib.h>
+
 #include "Python.h"
 #include "binary_tree.h"
 
@@ -13,7 +15,7 @@ void pylist_to_array(PyObject* list, char** arr, int n) {
 
 
 static PyObject* py_make_binary_tree(PyObject* self, PyObject* args) {
-  TREE* tree;
+  node* tree;
   char** arr;
   int n;
 
@@ -21,25 +23,25 @@ static PyObject* py_make_binary_tree(PyObject* self, PyObject* args) {
   PyArg_ParseTuple(args, "O", &list);
 
   n = PyList_Size(list);
-  arr = calloc(n, sizeof(char**));
+  arr = calloc(n, sizeof(char*));
   pylist_to_array(list, arr, n);
   tree = make_tree(arr, n);
-  free(arr); // Don't need this anymore, data should be in tree
+  free(arr);
   return PyCapsule_New(tree, NULL, NULL);
 }
 
 static PyObject* py_search_binary_tree(PyObject* self, PyObject* args) {
-  TREE* tree;
-  NODE* node;
+  node* tree;
+  node* mine;
   const char* key;
 
   PyObject* capsule;
   PyArg_ParseTuple(args, "Os", &capsule, &key);
 
   tree = PyCapsule_GetPointer(capsule, NULL);
-  node = search(tree->root, key);
+  mine = search(tree, key);
 
-  if (node) {
+  if (mine) {
     return Py_True;
   } else {
     return Py_False;
