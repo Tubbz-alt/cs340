@@ -1,8 +1,11 @@
+OBJ = binary_tree.o treesmodule.o
+
 .PHONY: all clean test
-all: binary_tree.o
-binary_tree.o: binary_tree.c
-	gcc -g -O3 binary_tree.c -c -o binary_tree.o
-clean:
-	rm -f *.o test
+
+all: trees.so
+trees.so: $(OBJ)
+	gcc -shared $^ -o $@
+%.o: %.c
+	gcc -I/usr/include/python2.7 -fPIC -O3 -c -o $@ $^
 test: binary_tree.c test.c
 	gcc -g binary_tree.c test.c -o test
