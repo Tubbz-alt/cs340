@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdio.h>
-#include "trees.h"
+#include "binary_tree.h"
 
 void print_tree(node* tree) {
   if (tree) {
@@ -22,4 +22,3 @@ void main() {
     printf("Didn't find bat!\n");
   }
 }
-

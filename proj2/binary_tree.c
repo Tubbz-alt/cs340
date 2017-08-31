@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
-#include "trees.h"
+#include "binary_tree.h"
 
 node* make_tree(char** arr, int n) {
   int i;

@@ -1,8 +1,8 @@
 .PHONY: all clean test
-all: trees.o
-trees.o: trees.c
-	gcc -g -O3 trees.c -c -o trees.o
+all: binary_tree.o
+binary_tree.o: binary_tree.c
+	gcc -g -O3 binary_tree.c -c -o binary_tree.o
 clean:
 	rm -f *.o test
-test: trees.c test.c
-	gcc -g trees.c test.c -o test
+test: binary_tree.c test.c
+	gcc -g binary_tree.c test.c -o test
