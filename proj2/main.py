@@ -54,7 +54,7 @@ def main():
 
   # Search for the word
   t1 = time.time()
-  found = search(data)
+  found = search(my_tree, word)
   t1 = time.time()
   
   # Tell user how long that took 
