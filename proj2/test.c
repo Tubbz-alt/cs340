@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdio.h>
-#include "binary_tree.h"
+#include "trees.h"
 
 void print_tree(node* tree) {
   if (tree) {

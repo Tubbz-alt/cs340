@@ -1,7 +1,7 @@
 #include <stdlib.h>
 
 #include "Python.h"
-#include "binary_tree.h"
+#include "trees.h"
 
 void pylist_to_array(PyObject*, char**, int);
 
