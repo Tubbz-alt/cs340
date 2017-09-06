@@ -13,7 +13,6 @@ void pylist_to_array(PyObject* list, char** arr, int n) {
   }
 }
 
-
 static PyObject* py_make_binary_tree(PyObject* self, PyObject* args) {
   node* tree;
   char** arr;
@@ -48,12 +47,27 @@ static PyObject* py_search_binary_tree(PyObject* self, PyObject* args) {
   }
 }
 
+static PyObject* py_make_red_black_tree(PyObject* self, PyObject* args) {
+  node* tree;
+  char** arr;
+  int n;
+
+  PyObject *list;
+  PyArg_ParseTuple(args, "O", &list);
+
+  n = PyList_Size(list);
+  arr = calloc(n, sizeof(char*));
+  pylist_to_array(list, arr, n);
+  tree = make_rb_tree(arr, n);
+  free(arr);
+  return PyCapsule_New(tree, NULL, NULL);
+}
+
 static PyMethodDef TreesMethods[] = {
   {"binary_tree", py_make_binary_tree, METH_VARARGS, ""},
   {"search_binary_tree", py_search_binary_tree, METH_VARARGS, ""},
   /* TODO:  Replace with real RBTree methods*/
-  {"red_black_tree", py_make_binary_tree, METH_VARARGS, ""},
-  {"search_red_black_tree", py_search_binary_tree, METH_VARARGS, ""},
+  {"red_black_tree", py_make_red_black_tree, METH_VARARGS, ""},
   {NULL, NULL, 0, NULL} //Sentinel
 };
 

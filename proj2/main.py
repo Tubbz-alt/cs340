@@ -3,7 +3,7 @@ import os
 import time
 import datetime
 
-from trees import binary_tree, red_black_tree, search_binary_tree, search_red_black_tree
+from trees import binary_tree, red_black_tree, search_binary_tree
 
 def menu(options, prompt):
   while True:
@@ -18,9 +18,9 @@ def menu(options, prompt):
 
 def main():
   # Determine which tree we'll use
-  trees = [(binary_tree, search_binary_tree), (red_black_tree, search_red_black_tree)]
+  trees = [binary_tree, red_black_tree]
   tree_options = ['Binary Tree', 'Red-Black Tree']
-  tree, search = trees[menu(tree_options, 'Choose a tree')]
+  tree = trees[menu(tree_options, 'Choose a tree')]
 
   # Determine the file size
   sizes = [30, 60, 90, 120, 150]
@@ -54,8 +54,8 @@ def main():
 
   # Search for the word
   t1 = time.time()
-  found = search(my_tree, word)
-  t1 = time.time()
+  found = search_binary_tree(my_tree, word)
+  t2 = time.time()
   
   # Tell user how long that took 
   delta = t2 - t1
