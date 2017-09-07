@@ -1,3 +1,4 @@
+
 # Ignore compiled python files
 *.pyc
 
@@ -12,6 +13,9 @@
 # Ignore outputs for 1st project
 proj1/output/
 proj1/runs.csv
+
+# Ignore outputs from 2nd project
+proj2/runs.csv
 
 #Ignore binaries from 1st project
 proj1/test
