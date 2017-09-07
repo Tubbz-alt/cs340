@@ -110,7 +110,7 @@ void insert_rb(node** tree, char* key) {
 void fixup_rb(node** tree, node* mine) {
   node* uncle;
   
-  while (mine->parent && mine->parent == RED) {
+  while (mine->parent && mine->parent->color == RED) {
     if (mine->parent == mine->parent->parent->left) {
       uncle = GRANDPARENT(mine)->right;
       if (uncle && uncle->color == RED) {
@@ -172,7 +172,7 @@ void left_rotate(node** tree, node* parent) {
 
   // I become my own grandfather
   mine->left = parent;
-  parent->parent;
+  parent->parent = mine;
 }
 
 void right_rotate(node** tree, node* parent) {
@@ -199,5 +199,5 @@ void right_rotate(node** tree, node* parent) {
 
   // I become my own grandfather
   mine->right = parent;
-  parent->parent;
+  parent->parent = mine;
 }

@@ -7,7 +7,7 @@ trees.so: $(OBJ)
 	gcc -shared $^ -o $@
 %.o: %.c
 	gcc -I/usr/include/python2.7 -fPIC -O3 -c -o $@ $^
-test: trees.o test.c
-	gcc -g trees.o test.c -o test
+test: trees.c test.c
+	gcc -g trees.c test.c -o test
 clean:
 	rm -f *.o *.so test

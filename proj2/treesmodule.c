@@ -66,7 +66,6 @@ static PyObject* py_make_red_black_tree(PyObject* self, PyObject* args) {
 static PyMethodDef TreesMethods[] = {
   {"binary_tree", py_make_binary_tree, METH_VARARGS, ""},
   {"search_binary_tree", py_search_binary_tree, METH_VARARGS, ""},
-  /* TODO:  Replace with real RBTree methods*/
   {"red_black_tree", py_make_red_black_tree, METH_VARARGS, ""},
   {NULL, NULL, 0, NULL} //Sentinel
 };
