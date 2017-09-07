@@ -4,10 +4,10 @@ of some of the trees to be too slow in python, so I created a c lib that
 handles the trees.
 
 Compiling:
-Simply run 'make' to create the sorts library.
+Simply run 'make' to create the trees library.
 
 Running:
-Be sure to compile the sorts library, then run 'python main.py'.
+Be sure to compile the trees library, then run 'python main.py'.
 
 Also, be sure to leave the input files in directories named 'perm' and
 'sorted' respectively.
