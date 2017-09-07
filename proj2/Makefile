@@ -11,3 +11,5 @@ test: trees.c test.c
 	gcc -g trees.c test.c -o test
 clean:
 	rm -f *.o *.so test
+zip:
+	zip -r proj2.zip Makefile main.py trees.c trees.h perm sorted README plots

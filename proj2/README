@@ -1,0 +1,13 @@
+Apology:
+This program is written largely in python, however I found the execution
+of some of the trees to be too slow in python, so I created a c lib that
+handles the trees.
+
+Compiling:
+Simply run 'make' to create the sorts library.
+
+Running:
+Be sure to compile the sorts library, then run 'python main.py'.
+
+Also, be sure to leave the input files in directories named 'perm' and
+'sorted' respectively.
