@@ -1,0 +1,3 @@
+This project is entirely python. Simply invoke
+`python main.py <filename>`
+with an appropriately formatted text file to run.
