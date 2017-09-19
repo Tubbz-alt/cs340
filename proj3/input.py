@@ -12,6 +12,6 @@ def parse(lines):
     if line.split(':')[1].strip() == "":
       continue
     fromv = int(line.split(':')[0])
-    for tov in line.split(':')[1].split(','):
+    for tov in filter(lambda x: x != '', line.split(':')[1].split(' ')):
       edges.append((fromv, int(tov)))
   return edges
