@@ -1,9 +1,20 @@
+#!/usr/bin/env python
 from input import get_lines, parse
-from graph import Graph, depth_first_search
+from graph import make_graph, topological_sort
+import sys
+from os.path import isfile
 
-lines = get_lines('acyclic_in.txt')
+filename = sys.argv[1]
+if not isfile(filename):
+  exit(1)
+
+lines = get_lines(filename)
 edges = parse(lines)
-print edges
-#graph = Graph(edges)
+graph = make_graph(edges)
+path, back_edges = topological_sort(graph)
 
-#print depth_first_search(graph)
+if not back_edges:
+  print "The path is: " + str(path)
+else:
+  print "The graph is cyclic. Back edges: " + str(back_edges)
+
