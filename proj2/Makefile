@@ -12,4 +12,4 @@ test: trees.c test.c
 clean:
 	rm -f *.o *.so test
 zip:
-	zip -r proj2.zip Makefile main.py trees.c trees.h perm sorted README plots
+	zip -r proj2.zip Makefile main.py trees.c trees.h treesmodule.c perm sorted README plots
