@@ -1,6 +1,9 @@
-from sorts import merge_sort, PriorityQueue, INFINITY
+import sys
+from sorts import merge_sort, PriorityQueue
 from trees import ComponentTree, find_set
 from graph import make_weighted_graph
+
+INFINITY = sys.maxint
 
 def kruskals(edges):
   mst = []
@@ -30,24 +33,23 @@ def kruskals(edges):
 def prims(edges):
   graph = make_weighted_graph(edges)
   def compare(x, y): return x[1] - y[1]
-  key = lambda x: x[0]
+  def key(x): return x[0]
   def update(x, y): x[1] = y
   pq = PriorityQueue(compare, key, update)
   parent = {}
   mst = []
   cost = 0
   for vertex in graph:
-    print vertex
     pq.insert([vertex, INFINITY])
     parent[vertex] = vertex
-  root = graph.keys[0]
+  root = graph.keys()[0]
   pq.decrease_priority(root, 0)
   while not pq.is_empty():
     v, w = pq.pop()
-    mst.append(set[parent[v], v])
+    if v != parent[v]: mst.append(set([parent[v], v]))
     cost += w
     for adj, weight in graph[v]:
-      elem = pq.get(v)
+      elem = pq.get(adj)
       if elem and elem[1] > weight:
         parent[adj] = v
         pq.decrease_priority(adj, weight)

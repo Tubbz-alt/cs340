@@ -33,7 +33,7 @@ class PriorityQueue:
     self.key = key
     self.update = update
 
-  def swap(a, b):
+  def swap(self, a, b):
     temp = self.heap[a]
     self.heap[a] = self.heap[b]
     self.heap[b] = temp
@@ -73,6 +73,7 @@ class PriorityQueue:
         return
       
   def pop(self):
+    if len(self.heap) == 1: return self.heap.pop()
     bottom = self.heap.pop()
     top = self.heap.pop(0)
     self.heap.insert(0, bottom)
@@ -83,6 +84,6 @@ class PriorityQueue:
 
   def get(self, key):
     for elem in self.heap:
-      if self.key(elem) == elem:
+      if self.key(elem) == key:
         return elem
     return None

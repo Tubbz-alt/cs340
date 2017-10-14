@@ -5,4 +5,5 @@ from mst import kruskals, prims
 
 edges = dedupe(parse(get_lines("graph.txt")))
 
+print kruskals(edges)
 print prims(edges)
