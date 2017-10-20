@@ -1,4 +1,5 @@
 import sys
+from sorts import PriorityQueue
 
 INFINITY = sys.maxint
 
@@ -30,11 +31,21 @@ def bellman_ford(graph, source):
         return None
   return d
 
-# def dijkstra(graph, source):
-#   def compare(x, y): return x[1] - y[1]
-#   def key(x): return x[0]
-#   def update(x, y): x[1] = y
-#   d = init_single_source(graph, source)
-#   pq  = PriorityQueue(compare, key, update)
-  
+def dijkstra(graph, source):
+  def compare(x, y): return x[1] - y[1]
+  def key(x): return x[0]
+  def update(x, y): x[1] = y
+  d = init_single_source(graph, source)
+  pq  = PriorityQueue(compare, key, update)
+  for v in graph:
+    pq.insert([v, INFINITY])
+  pq.decrease_priority(source, 0)
+  while not pq.is_empty():
+    v, _ = pq.pop()
+    for adj, weight in graph[v]:
+      elem = pq.get(adj)
+      if elem and elem[1] > d[v] + weight:
+        pq.decrease_priority(adj, weight)
+  return d
+        
   
