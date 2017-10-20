@@ -1,0 +1,3 @@
+This project is written in python. To execute the program run
+`python main.py <filename>`
+where filename is the graph input file. Then follow the on-screen prompts.
