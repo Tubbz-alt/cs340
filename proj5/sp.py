@@ -31,7 +31,7 @@ def bellman_ford(graph, source):
   for v in graph:
     for adj, weight in graph[v]:
       if d[adj] > d[v] + weight:
-        return None
+        return None, None
   return d, parent
 
 def dijkstra(graph, source):
@@ -62,4 +62,4 @@ def get_shortest_path(d, parent, dest):
     curr = next
     next = parent[curr]
     order.append(curr)
-  return dist, order
+  return dist, order[::-1] ## Reverse the order so it leads from source to dest

@@ -2,7 +2,7 @@ from input import get_lines, parse
 from graph import make_graph, topological_sort
 from sp import dag_sp, bellman_ford, dijkstra, get_shortest_path
 
-edges = parse(get_lines("cyclic.txt"))
+edges = parse(get_lines("dag.txt"))
 graph = make_graph(edges)
 vec, backs = topological_sort(graph)
 
