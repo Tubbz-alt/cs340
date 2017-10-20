@@ -41,11 +41,12 @@ def dijkstra(graph, source):
     pq.insert([v, INFINITY])
   pq.decrease_priority(source, 0)
   while not pq.is_empty():
-    v, _ = pq.pop()
+    v, w = pq.pop()
+    d[v] = w
     for adj, weight in graph[v]:
       elem = pq.get(adj)
       if elem and elem[1] > d[v] + weight:
-        pq.decrease_priority(adj, weight)
+        pq.decrease_priority(adj, d[v] + weight)
   return d
         
   
