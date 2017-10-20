@@ -1,6 +1,6 @@
 from input import get_lines, parse
 from graph import make_graph, topological_sort
-from sp import dag_sp, bellman_ford, dijkstra
+from sp import dag_sp, bellman_ford, dijkstra, get_shortest_path
 
 edges = parse(get_lines("cyclic.txt"))
 graph = make_graph(edges)
@@ -18,6 +18,14 @@ if cycle:
   print "Cyclic"
   print backs
 
-print dag_sp(graph, vec, '1')
-print bellman_ford(graph, '1')
-print dijkstra(graph, '1') ## This is gonna be wrong cus it has neg edges
+
+dag_sol = dag_sp(graph, vec, '1')
+bf_sol = bellman_ford(graph, '1')
+dijk_sol = dijkstra(graph, '1')
+
+print dag_sol
+print bf_sol
+print dijk_sol
+
+d, parent = dag_sol
+print get_shortest_path(d, parent, '5')

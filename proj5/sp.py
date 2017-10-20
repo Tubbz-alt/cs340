@@ -52,5 +52,14 @@ def dijkstra(graph, source):
         pq.decrease_priority(adj, d[v] + weight)
         parent[adj] = v
   return d, parent
-        
-  
+
+def get_shortest_path(d, parent, dest):
+  dist = d[dest]
+  curr = dest
+  next = parent[curr]
+  order = [curr]
+  while curr != next:
+    curr = next
+    next = parent[curr]
+    order.append(curr)
+  return dist, order
