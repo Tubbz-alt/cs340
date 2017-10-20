@@ -4,7 +4,7 @@ from sp import dag_sp, bellman_ford, dijkstra
 
 edges = parse(get_lines("dag.txt"))
 graph = make_graph(edges)
-vec, backs = topological_sort(graph) ## Returning the cross edges???
+vec, backs = topological_sort(graph)
 
 negs = False
 for _, _, w in edges:

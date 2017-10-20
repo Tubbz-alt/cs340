@@ -33,6 +33,6 @@ def dfs_visit(graph, v, color, stack, back_edges):
       dfs_visit(graph, adj, color, stack, back_edges)
     elif color [adj] == GREY:
       back_edges.append((v, adj))
-  color[v] == BLACK
+  color[v] = BLACK
   stack.append(v)
 
