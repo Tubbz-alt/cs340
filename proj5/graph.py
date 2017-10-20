@@ -28,10 +28,10 @@ def topological_sort(graph):
 
 def dfs_visit(graph, v, color, stack, back_edges):
   color[v] = GREY
-  for adj in graph[v]:
+  for adj, _ in graph[v]:
     if color[adj] == WHITE:
       dfs_visit(graph, adj, color, stack, back_edges)
-    elif color [adj] == GREY:
+    elif color [adj] == BLACK:
       back_edges.append((v, adj))
   color[v] == BLACK
   stack.append(v)
