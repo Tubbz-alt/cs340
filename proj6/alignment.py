@@ -6,13 +6,14 @@ DIAGONAL = 1
 RIGHT = 2
 BASE = 4
 SIMILAR_LETTERS = set(map(frozenset,[
-  ["a","u"], ["b","p"], ["c","k"], ["c","s"],
-  ["d","t"], ["e","y"], ["g","j"], ["g","k"],
-  ["i","y"], ["k","q"], ["k","q"] ,["m","n"],
-  ["s","z"], ["v","w"]]))
+  ["b","p"], ["c","k"], ["c","s"], ["d","t"],
+  ["e","y"], ["g","j"], ["g","k"], ["i","y"],
+  ["k","q"], ["k","q"] ,["m","n"], ["s","z"], ["v","w"]]))
+VOWELS = 'aeiou'
 
 def are_similar(l1, l2):
-  return frozenset([l1, l2]) in SIMILAR_LETTERS
+  return frozenset([l1, l2]) in SIMILAR_LETTERS or (
+    l1 in VOWELS and l2 in VOWELS)
 
 def walkback(w1, w2, direction_matrix):
   r1, r2 = "", ""
@@ -77,4 +78,5 @@ def optimal_alignment(w1, w2, match_score=2, gap_score=-2,
   return score_matrix[-1][-1], walkback(w1, w2, direction_matrix)
 
 def longest_common_subsequence(w1, w2):
-  return optimal_alignment(w1, w2, 2, -1, -INFINITY, -INFINITY)
+  return optimal_alignment(w1, w2, 1, 0, -INFINITY, -INFINITY)
+  
