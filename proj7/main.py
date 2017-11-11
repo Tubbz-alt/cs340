@@ -1,23 +1,19 @@
+import sys
+from input import parse
 from knapsack import knapsack, walkback
 
 def main():
-  algo = prompt("Longest common subsequence", "Optimal alignment")
-  if algo == 0:
-    w1, w2 = prompt("First word"), prompt("Second word")
-    score, alignment = longest_common_subsequence(w1, w2)
-  else:
-    match_score = int(prompt("Match score"))
-    gap_score = int(prompt("Gap score"))
-    similar_score = int(prompt("Similar letter score"))
-    dissimilar_score = int(prompt("Dissimilar letter score"))
-    w1, w2 = prompt("First word"), prompt("Second word")
-    score, alignment = optimal_alignment(w1, w2, match_score, gap_score,
-                                         similar_score, dissimilar_score)
+  weights, values = parse(sys.argv[1])
+  weight_bound = int(prompt("Weight Bound"))
+  matrix = knapsack(weights, values, weight_bound)
 
-  print "Score %d" % score
-  print "Optimal alignment:"
-  print alignment[0]
-  print alignment[1]
+  score = matrix[-1][-1] ##Best score will always be in the last position
+  items = walkback(weights, values, matrix)
+
+  print "The best score is %d and the items are %s" % (score, str(items))
+
+def usage():
+  print "Usage: %s input_file" % sys.argv[0]
 
 def prompt(*args):
   if len(args) == 1:
@@ -33,4 +29,7 @@ def prompt(*args):
         return choice
 
 if __name__ == '__main__':
-    main()
+  if len(sys.argv) != 2:
+    usage()
+    sys.exit(1)
+  main()
