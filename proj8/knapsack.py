@@ -12,6 +12,7 @@ def knapsack(weights, values, weight_bound):
   
   while len(queue) != 0:
     ## Best-first visitations
+    ## Backtracking
     bound, state = heappop(queue)
     if '*' not in set(state):
       solution = -bound
@@ -20,7 +21,6 @@ def knapsack(weights, values, weight_bound):
         best_state = state
       queue = prune(queue, bound)
     else:
-      ## Backtracking
       branch(queue, state, *boundargs)
   return items_as_vec(best_state), best_solution
 
